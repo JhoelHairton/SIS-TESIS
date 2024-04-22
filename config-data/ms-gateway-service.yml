@@ -1,0 +1,36 @@
+server:
+  port: 8282
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8090/eureka
+  instance:
+    hostname: localhost
+
+spring:
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enable: true
+      routes:
+        - id: ms-notificaciones-service
+          uri: lb://ms-notificaciones-service
+          predicates:
+            - Path=/notificacion/**
+        - id: ms-documentos-service
+          uri: lb://ms-documentos-service
+          predicates:
+            - Path=/documento/**
+        - id: ms-gestion-service
+          uri: lb://ms-gestion-service
+          predicates:
+            - Path=/proyecto/**
+            - Path=/tarea/**
+        - id: ms-user-service
+          uri: lb://ms-user-service
+          predicates:
+            - Path=/auth/**
+            - Path=/api/user/**
+
