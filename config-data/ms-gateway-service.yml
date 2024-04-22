@@ -26,10 +26,13 @@ spring:
         - id: ms-gestion-service
           uri: lb://ms-gestion-service
           predicates:
-            - Path=/proyecto/**
-            - Path=/tarea/**
+            - Path=/proyecto/**, /tarea/**, /
         - id: ms-user-service
           uri: lb://ms-user-service
           predicates:
             - Path=/auth/**, /users/**, /api/user/**, /
+        - id: ms-gestiontesis-service
+          uri: lb://ms-gestiontesis-service
+          predicates:
+            - Path=/revision/**, /tesis/**, /
 
