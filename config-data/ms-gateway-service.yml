@@ -31,6 +31,5 @@ spring:
         - id: ms-user-service
           uri: lb://ms-user-service
           predicates:
-            - Path=/auth/**
-            - Path=/api/user/**
+            - Path=/auth/**, /users/**, /api/user/**, /
 
